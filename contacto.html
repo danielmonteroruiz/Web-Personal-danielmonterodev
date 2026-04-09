@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <title>Contacto</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+    <div id="toast">Mensaje enviado</div>
+    <div id="particles-bg"></div>
+    <nav class="navbar">
+
+        <a href="home.html">🏠</a>
+        <a href="trayectoria.html">👤</a>
+        <a href="proyectos.html">💼</a>
+        <a href="contacto.html">✉️</a>
+
+    </nav>
+
+    <h1 class="contact-title" , style="text-align:center;margin-top:100px;">CONTACTA CONMIGO</h1>
+
+    <div class="contact-container">
+
+        <!-- CONTACT FIELDS -->
+
+        <form id="contactForm" action="https://formsubmit.co/dmr.coding@protonmail.com" method="POST">
+
+            <input type="text" name="nombre" placeholder="Nombre" required>
+
+            <input type="email" name="email" placeholder="Email" required>
+
+            <input type="text" name="asunto" placeholder="Asunto" required>
+
+            <textarea name="mensaje" placeholder="Mensaje 
+Cuéntame sobre tu proyecto u oferta..." required></textarea>
+
+
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <button class="btn" type="submit">Enviar mensaje</button>
+
+
+        </form>
+
+
+        <!-- RIGHT INFORMATION -->
+
+        <div class="contact-boxes">
+
+            <div class="box">
+
+                <h3>Información de contacto</h3>
+
+                <p>Email: dmr.coding@protonmail.com</p>
+
+                <p>Teléfono: +34</p>
+
+                <p>Ubicación: Coslada (Madrid), España</p>
+
+            </div>
+
+            <div class="box">
+
+                <h3>Disponibilidad</h3>
+
+                <p>Lunes - Viernes: 8:00 - 17:00</p>
+
+
+                <p style="color: #00ff9c; ">Tiempo de respuesta: 24 - 48h</p>
+
+            </div>
+
+            <div class="box">
+
+                <h3>Descarga mi CV</h3>
+
+                <a class="btn" href="cv/CV_DanielMontero_2026.pdf">Descargar CV</a>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script src="js/particles-config.js"></script>
+
+    <script>
+
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+
+            e.preventDefault(); // redirect off
+
+            const form = this;
+            const data = new FormData(form);
+
+            fetch(form.action, {
+                method: "POST",
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(() => {
+
+                    const toast = document.getElementById("toast");
+
+                    toast.classList.add("show");
+
+                    setTimeout(() => {
+                        toast.classList.remove("show");
+                    }, 3000);
+
+                    form.reset(); // clean form
+
+                })
+                .catch(error => console.log(error));
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
