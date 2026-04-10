@@ -621,7 +621,7 @@ img {
 
     .home {
         flex-direction: column;
-        overflow-y: auto;
+        overflow-y: scroll;
         text-align: center;
         padding: 20px;
         gap: 30px;
