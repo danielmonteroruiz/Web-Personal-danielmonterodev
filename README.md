@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Este es el sitio web de portafolio personal de Daniel Montero Ruiz, un desarrollador junior especializado en aplicaciones web, móviles y videojuegos. El sitio presenta una interfaz moderna con efectos de partículas y una experiencia de terminal simulada.
+Este es el sitio web de portafolio personal de Daniel Montero Ruiz, un desarrollador junior especializado en aplicaciones, apps web, móviles y videojuegos. El sitio presenta una interfaz moderna con efectos de partículas y una experiencia de terminal simulada.
 
 ## Características
 
