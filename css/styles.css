@@ -693,8 +693,9 @@ body {
 
     .projects-section {
         padding: 120px 14px 0;
-        gap: 10px;
-        grid-template-columns: 42px minmax(0, 1fr) 42px;
+        gap: 0;
+        grid-template-columns: minmax(0, 1fr);
+        position: relative;
     }
 
     .carousel-control {
@@ -702,6 +703,22 @@ body {
         height: 42px;
         flex-basis: 42px;
         font-size: 22px;
+        position: absolute;
+        top: 50%;
+        z-index: 8;
+        transform: translateY(-50%);
+    }
+
+    .carousel-control:hover {
+        transform: translateY(-50%);
+    }
+
+    .carousel-control-prev {
+        left: 8px;
+    }
+
+    .carousel-control-next {
+        right: 8px;
     }
 
     .project-card {
@@ -734,17 +751,20 @@ body {
 @media (max-width:768px) {
 
     .projects {
-        --card-width: min(28vw, 220px);
-        --card-height: 620px;
-        --side-offset: min(25vw, 150px);
-        --hidden-offset: min(42vw, 280px);
-        --depth: 110px;
-        min-height: 690px;
+        --card-width: min(100%, 360px);
+        --card-height: 680px;
+        --side-offset: 120vw;
+        --hidden-offset: 140vw;
+        --depth: 0px;
+        min-height: 740px;
+        max-width: 390px;
+        margin: 0 auto;
+        overflow: hidden;
     }
 
     .project-card h3 {
-        min-height: 84px;
-        font-size: 18px;
+        min-height: auto;
+        font-size: 17px;
     }
 
     .project-card p {
@@ -753,22 +773,24 @@ body {
     }
 
     .tags {
-        min-height: 168px;
+        min-height: 150px;
     }
 
     .image-modal-dialog {
-        width: min(90vw, 560px);
-        padding: 18px;
-        gap: 10px;
+        width: min(94vw, 560px);
+        padding: 54px 12px 16px;
+        gap: 0;
+        position: relative;
     }
 
     .image-modal-stage {
-        --modal-slide-width: min(46vw, 240px);
-        --modal-slide-height: min(44vh, 280px);
-        --modal-side-offset: min(22vw, 110px);
-        --modal-hidden-offset: min(40vw, 220px);
-        --modal-depth: 80px;
-        height: min(48vh, 320px);
+        --modal-slide-width: min(100%, 430px);
+        --modal-slide-height: min(62vh, 430px);
+        --modal-side-offset: 120vw;
+        --modal-hidden-offset: 140vw;
+        --modal-depth: 0px;
+        width: 100%;
+        height: min(64vh, 460px);
     }
 
     .image-modal-nav {
@@ -776,6 +798,24 @@ body {
         height: 38px;
         flex-basis: 38px;
         font-size: 20px;
+        position: absolute;
+        top: 50%;
+        z-index: 6;
+        transform: translateY(-50%);
+    }
+
+    .image-modal-prev {
+        left: 8px;
+    }
+
+    .image-modal-next {
+        right: 8px;
+    }
+
+    .image-modal-slide.is-left,
+    .image-modal-slide.is-right {
+        opacity: 0;
+        pointer-events: none;
     }
 
 }
