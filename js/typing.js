@@ -11,7 +11,11 @@ const words = [
 "Unity",
 "HTML",
 "CSS",
-"Responsive Design"
+"Responsive Design",
+"Spring Boot",
+"Git",
+"GitHub",
+"Postman"
 
 ];
 
