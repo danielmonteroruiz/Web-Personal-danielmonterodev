@@ -9,6 +9,67 @@ const imageModalCarousel = imageModal?.querySelector(".image-modal-carousel");
 let activeModalImages = [];
 let activeModalIndex = 0;
 
+const swipeConfig = {
+  minDistance: 48,
+  maxVerticalDrift: 80,
+};
+
+function addSwipeNavigation(element, onSwipeLeft, onSwipeRight) {
+  if (!element) {
+    return;
+  }
+
+  let startX = 0;
+  let startY = 0;
+  let isTracking = false;
+
+  element.addEventListener(
+    "touchstart",
+    (event) => {
+      if (event.touches.length !== 1) {
+        return;
+      }
+
+      startX = event.touches[0].clientX;
+      startY = event.touches[0].clientY;
+      isTracking = true;
+    },
+    { passive: true }
+  );
+
+  element.addEventListener(
+    "touchend",
+    (event) => {
+      if (!isTracking || event.changedTouches.length !== 1) {
+        return;
+      }
+
+      const endX = event.changedTouches[0].clientX;
+      const endY = event.changedTouches[0].clientY;
+      const deltaX = endX - startX;
+      const deltaY = endY - startY;
+
+      isTracking = false;
+
+      if (
+        Math.abs(deltaX) < swipeConfig.minDistance ||
+        Math.abs(deltaY) > swipeConfig.maxVerticalDrift ||
+        Math.abs(deltaX) < Math.abs(deltaY)
+      ) {
+        return;
+      }
+
+      if (deltaX < 0) {
+        onSwipeLeft();
+        return;
+      }
+
+      onSwipeRight();
+    },
+    { passive: true }
+  );
+}
+
 document.querySelectorAll(".gallery-toggle").forEach((button) => {
   button.addEventListener("click", () => {
     const card = button.closest(".project-card");
@@ -126,8 +187,15 @@ imageModalNext?.addEventListener("click", () => {
   renderModalImage();
 });
 
+addSwipeNavigation(
+  imageModalCarousel,
+  () => imageModalNext?.click(),
+  () => imageModalPrev?.click()
+);
+
 const prevButton = document.querySelector(".carousel-control-prev");
 const nextButton = document.querySelector(".carousel-control-next");
+const projectsCarousel = document.querySelector("#projects-carousel");
 
 if (projectCards.length > 0 && prevButton && nextButton) {
   let activeIndex = 0;
@@ -182,6 +250,12 @@ if (projectCards.length > 0 && prevButton && nextButton) {
     activeIndex = (activeIndex + 1) % projectCards.length;
     updateCarousel();
   });
+
+  addSwipeNavigation(
+    projectsCarousel,
+    () => nextButton.click(),
+    () => prevButton.click()
+  );
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && imageModal && !imageModal.hidden) {
