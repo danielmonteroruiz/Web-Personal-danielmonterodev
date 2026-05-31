@@ -8,6 +8,7 @@ const imageModalCarousel = imageModal?.querySelector(".image-modal-carousel");
 
 let activeModalImages = [];
 let activeModalIndex = 0;
+let syncProjectCarouselHeight = () => {};
 
 const swipeConfig = {
   minDistance: 48,
@@ -82,6 +83,7 @@ document.querySelectorAll(".gallery-toggle").forEach((button) => {
     const isOpen = gallery.classList.toggle("is-open");
     button.setAttribute("aria-expanded", String(isOpen));
     button.textContent = isOpen ? "Ocultar imagenes" : "Ver imagenes";
+    requestAnimationFrame(syncProjectCarouselHeight);
   });
 });
 
@@ -199,6 +201,7 @@ const projectsCarousel = document.querySelector("#projects-carousel");
 
 if (projectCards.length > 0 && prevButton && nextButton) {
   let activeIndex = 0;
+  const mobileProjectsQuery = window.matchMedia("(max-width: 768px)");
   const positionClasses = [
     "is-left",
     "is-center",
@@ -239,6 +242,30 @@ if (projectCards.length > 0 && prevButton && nextButton) {
         card.classList.add("is-hidden-right");
       }
     });
+
+    requestAnimationFrame(syncProjectCarouselHeight);
+  };
+
+  syncProjectCarouselHeight = () => {
+    if (!projectsCarousel) {
+      return;
+    }
+
+    const activeCard = projectCards[activeIndex];
+
+    if (!activeCard) {
+      return;
+    }
+
+    if (mobileProjectsQuery.matches) {
+      projectsCarousel.style.height = `${activeCard.offsetHeight}px`;
+      return;
+    }
+
+    const tallestCardHeight = Math.max(
+      ...projectCards.map((card) => card.offsetHeight)
+    );
+    projectsCarousel.style.height = `${tallestCardHeight}px`;
   };
 
   prevButton.addEventListener("click", () => {
@@ -282,5 +309,7 @@ if (projectCards.length > 0 && prevButton && nextButton) {
     }
   });
 
+  window.addEventListener("resize", syncProjectCarouselHeight);
+  mobileProjectsQuery.addEventListener?.("change", syncProjectCarouselHeight);
   updateCarousel();
 }
