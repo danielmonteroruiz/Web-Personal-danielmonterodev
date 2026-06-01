@@ -1,41 +1,42 @@
+// Session-aware visit counter for the home page.
+// CounterAPI receives one increment per browser session and the value is cached locally.
 document.addEventListener("DOMContentLoaded", () => {
-  const contador = document.getElementById("contador");
-  if (!contador) return;
+  const counterElement = document.getElementById("contador");
 
-  const visitadaKey = "visitado_danimonterodev";
-  const countKey = "contador_danimonterodev";
-
-  const yaVisitado = sessionStorage.getItem(visitadaKey);
-  const countGuardado = sessionStorage.getItem(countKey);
-
-  // Si ya contó antes en este navegador, muestra el valor guardado
-  if (yaVisitado && countGuardado) {
-    contador.textContent = countGuardado;
+  if (!counterElement) {
     return;
   }
 
-  // Primera visita en este navegador: suma 1
+  const visitedSessionKey = "visitado_danimonterodev";
+  const cachedCountKey = "contador_danimonterodev";
+  const cachedCount = sessionStorage.getItem(cachedCountKey);
+
+  if (sessionStorage.getItem(visitedSessionKey) && cachedCount) {
+    counterElement.textContent = cachedCount;
+    return;
+  }
+
   fetch("https://api.counterapi.dev/v1/danimonterodev/visitas/up")
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
       }
-      return res.json();
+
+      return response.json();
     })
     .then((data) => {
-      // Algunas APIs devuelven count y otras value
-      const valor = data.count ?? data.value;
+      const count = data.count ?? data.value;
 
-      if (valor === undefined) {
+      if (count === undefined) {
         throw new Error("La API no devolvió count/value");
       }
 
-      contador.textContent = valor;
-      sessionStorage.setItem(visitadaKey, "true");
-      sessionStorage.setItem(countKey, String(valor));
+      counterElement.textContent = count;
+      sessionStorage.setItem(visitedSessionKey, "true");
+      sessionStorage.setItem(cachedCountKey, String(count));
     })
     .catch((error) => {
       console.error("Error al cargar el contador:", error);
-      contador.textContent = "Error";
+      counterElement.textContent = "Error";
     });
 });

@@ -1,134 +1,102 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta charset="UTF-8">
-
-<title>Trayectoria</title>
-
-<link rel="stylesheet" href="css/styles.css">
-
+  <!-- Page metadata and global portfolio styles. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trayectoria</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-<script src="js/particles-config.js"></script>
-
 <body>
-<div id="particles-bg"></div>
-<nav class="navbar">
+  <!-- Animated particle background shared across the portfolio. -->
+  <div id="particles-bg"></div>
 
-<a href="home.html">🏠</a>
-<a href="trayectoria.html">👤</a>
-<a href="proyectos.html">💼</a>
-<a href="contacto.html">✉️</a>
+  <!-- Fixed bottom navigation used by every main page. -->
+  <nav class="navbar" aria-label="Navegación principal">
+    <a href="home.html" aria-label="Inicio">🏠</a>
+    <a href="trayectoria.html" aria-label="Trayectoria">👤</a>
+    <a href="proyectos.html" aria-label="Proyectos">💼</a>
+    <a href="contacto.html" aria-label="Contacto">✉️</a>
+  </nav>
 
-</nav>
+  <main>
+    <!-- Introductory career summary. -->
+    <h1 class="page-title">Mi Trayectoria</h1>
 
-<h1 style="text-align:center;margin-top:80px;">Mi Trayectoria</h1>
+    <p class="about-text">
+      Recién titulado en Desarrollo de Aplicaciones Multiplataforma (DAM).
+      Actualmente me encuentro en etapa Junior como desarrollador, con una gran
+      motivación por seguir aprendiendo nuevas tecnologías y mejorar mis habilidades cada día.
+      Me interesa profundizar en el desarrollo de software moderno, dominar nuevos lenguajes de
+      programación y ampliar mis conocimientos en arquitectura, bases de datos y desarrollo
+      de aplicaciones escalables, APIs y videojuegos.
+    </p>
 
-<p class="about-text">
-Recién titulado en Desarrollo de Aplicaciones Multiplataforma (DAM).
-Actualmente me encuentro en etapa Junior como desarrollador, con una gran motivación por seguir
-aprendiendo nuevas tecnologías y mejorar mis habilidades cada día.
+    <!-- Skill and experience timeline cards. -->
+    <section class="timeline" aria-label="Áreas de experiencia">
+      <article class="box">
+        <h3>Formación</h3>
+        <p class="timeline-text">
+          Formación en Desarrollo de Aplicaciones Multiplataforma donde he adquirido conocimientos
+          en programación orientada a objetos, bases de datos, desarrollo móvil y buenas prácticas
+          de desarrollo de software.
+        </p>
+        <div class="tags">
+          <span>Java</span>
+          <span>Kotlin</span>
+          <span>SQL</span>
+          <span>PostgreSQL</span>
+        </div>
+      </article>
 
-Me interesa profundizar en el desarrollo de software moderno, dominar nuevos lenguajes de
-programación y ampliar mis conocimientos en arquitectura, bases de datos y desarrollo
-de aplicaciones escalables, APIs y videojuegos.
-</p>
+      <article class="box">
+        <h3>Backend</h3>
+        <p class="timeline-text">
+          Experiencia desarrollando aplicaciones backend utilizando Java y conectando aplicaciones
+          con bases de datos relacionales. Interés en arquitecturas limpias, APIs REST y buenas
+          prácticas de desarrollo.
+        </p>
+        <div class="tags">
+          <span>Java</span>
+          <span>APIs REST</span>
+          <span>SQL</span>
+          <span>PostgreSQL</span>
+        </div>
+      </article>
 
-<div class="timeline">
+      <article class="box">
+        <h3>Desarrollo Mobile</h3>
+        <p class="timeline-text">
+          Desarrollo de aplicaciones móviles utilizando Kotlin y explorando el desarrollo
+          multiplataforma con Flutter, enfocado en crear aplicaciones funcionales y bien estructuradas.
+        </p>
+        <div class="tags">
+          <span>Kotlin</span>
+          <span>Android</span>
+          <span>Flutter</span>
+          <span>Jetpack Compose</span>
+        </div>
+      </article>
 
-<div class="box">
+      <article class="box">
+        <h3>DevOps y herramientas</h3>
+        <p class="timeline-text">
+          Uso de herramientas modernas de desarrollo para mejorar la productividad y el despliegue
+          de aplicaciones, incluyendo entornos Linux, contenedores y control de versiones.
+        </p>
+        <div class="tags">
+          <span>Docker</span>
+          <span>Linux</span>
+          <span>Git</span>
+          <span>GitHub</span>
+        </div>
+      </article>
+    </section>
+  </main>
 
-<h3>Formación</h3>
-
-<p style="font-size: small; text-align: justify;">
-Formación en Desarrollo de Aplicaciones Multiplataforma donde he adquirido conocimientos
-en programación orientada a objetos, bases de datos, desarrollo móvil y buenas prácticas
-de desarrollo de software.
-</p>
-
-<div class="tags">
-
-<span>Java</span>
-<span>Kotlin</span>
-<span>SQL</span>
-<span>PostgreSQL</span>
-
-</div>
-
-</div>
-
-
-<div class="box">
-
-<h3>Backend</h3>
-
-<p style="font-size: small; text-align: justify;">
-Experiencia desarrollando aplicaciones backend utilizando Java y conectando aplicaciones
-con bases de datos relacionales. Interés en arquitecturas limpias, APIs REST y buenas
-prácticas de desarrollo.
-</p>
-
-<div class="tags">
-
-<span>Java</span>
-<span>APIs REST</span>
-<span>SQL</span>
-<span>PostgreSQL</span>
-
-</div>
-
-</div>
-
-
-<div class="box">
-
-<h3>Desarrollo Mobile</h3>
-
-<p style="font-size: small; text-align: justify;">
-Desarrollo de aplicaciones móviles utilizando Kotlin y explorando el desarrollo
-multiplataforma con Flutter, enfocado en crear aplicaciones funcionales y bien estructuradas.
-</p>
-
-<div class="tags">
-
-<span>Kotlin</span>
-<span>Android</span>
-<span>Flutter</span>
-<span>Jetpack Compose</span>
-
-</div>
-
-</div>
-
-
-<div class="box">
-
-<h3>DevOps y herramientas</h3>
-
-<p style="font-size: small; text-align: justify;">
-Uso de herramientas modernas de desarrollo para mejorar la productividad y el despliegue
-de aplicaciones, incluyendo entornos Linux, contenedores y control de versiones.
-</p>
-
-<div class="tags">
-
-<span>Docker</span>
-<span>Linux</span>
-<span>Git</span>
-<span>GitHub</span>
-
-</div>
-
-</div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-<script src="js/particles-config.js"></script>
-
+  <!-- External libraries and page behavior. -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="js/particles-config.js"></script>
 </body>
 </html>

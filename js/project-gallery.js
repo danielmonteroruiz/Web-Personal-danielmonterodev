@@ -8,6 +8,7 @@ const imageModalCarousel = imageModal?.querySelector(".image-modal-carousel");
 
 let activeModalImages = [];
 let activeModalIndex = 0;
+let modalTransitionTimer = 0;
 let syncProjectCarouselHeight = () => {};
 
 const swipeConfig = {
@@ -15,6 +16,7 @@ const swipeConfig = {
   maxVerticalDrift: 80,
 };
 
+// Adds horizontal swipe navigation while preserving normal vertical page scrolling.
 function addSwipeNavigation(element, onSwipeLeft, onSwipeRight) {
   if (!element) {
     return;
@@ -71,6 +73,38 @@ function addSwipeNavigation(element, onSwipeLeft, onSwipeRight) {
   );
 }
 
+// Keeps gallery previews compact: show two thumbnails and summarize the rest with +N.
+// Hidden thumbnails remain in the DOM so the modal can still browse the full gallery.
+document.querySelectorAll(".project-gallery").forEach((gallery) => {
+  const images = Array.from(gallery.querySelectorAll("img"));
+  const hiddenImageCount = Math.max(images.length - 2, 0);
+
+  if (hiddenImageCount === 0) {
+    return;
+  }
+
+  gallery.classList.add("has-more-images");
+  gallery.dataset.moreCount = `+${hiddenImageCount}`;
+
+  const moreIndicator = document.createElement("button");
+  moreIndicator.className = "gallery-more-count";
+  moreIndicator.type = "button";
+  moreIndicator.textContent = `+${hiddenImageCount}`;
+  moreIndicator.setAttribute(
+    "aria-label",
+    `Ver ${hiddenImageCount} imagenes mas`
+  );
+
+  moreIndicator.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    openProjectImage(images[2] ?? images[0]);
+  });
+
+  gallery.appendChild(moreIndicator);
+});
+
+// Expands or collapses the inline preview gallery inside each project card.
 document.querySelectorAll(".gallery-toggle").forEach((button) => {
   button.addEventListener("click", () => {
     const card = button.closest(".project-card");
@@ -87,6 +121,7 @@ document.querySelectorAll(".gallery-toggle").forEach((button) => {
   });
 });
 
+// Rebuilds modal slides and assigns spatial classes around the active image.
 const renderModalImage = () => {
   if (!imageModalCarousel || activeModalImages.length === 0) {
     return;
@@ -135,6 +170,27 @@ const renderModalImage = () => {
   });
 };
 
+// Applies a visible transition before replacing the active modal image.
+const changeModalImage = (nextIndex, direction) => {
+  if (!imageModalCarousel || activeModalImages.length === 0) {
+    return;
+  }
+
+  window.clearTimeout(modalTransitionTimer);
+  imageModalCarousel.classList.remove("is-next", "is-prev");
+  imageModalCarousel.classList.add(direction === "prev" ? "is-prev" : "is-next");
+  imageModalCarousel.classList.add("is-changing");
+
+  modalTransitionTimer = window.setTimeout(() => {
+    activeModalIndex = nextIndex;
+    renderModalImage();
+    requestAnimationFrame(() => {
+      imageModalCarousel.classList.remove("is-changing", "is-next", "is-prev");
+    });
+  }, 320);
+};
+
+// Opens the fullscreen modal from a clicked thumbnail or +N preview indicator.
 const openProjectImage = (image) => {
   if (!imageModal) {
     return;
@@ -144,11 +200,14 @@ const openProjectImage = (image) => {
   activeModalImages = Array.from(gallery?.querySelectorAll("img") || []);
   activeModalIndex = Math.max(activeModalImages.indexOf(image), 0);
   imageModal.hidden = false;
+  window.clearTimeout(modalTransitionTimer);
+  imageModalCarousel?.classList.remove("is-changing", "is-next", "is-prev");
   renderModalImage();
 };
 
 window.openProjectImage = openProjectImage;
 
+// Turns every gallery thumbnail into a modal trigger.
 document.querySelectorAll(".project-gallery img").forEach((image) => {
   image.addEventListener("click", (event) => {
     event.preventDefault();
@@ -157,6 +216,7 @@ document.querySelectorAll(".project-gallery img").forEach((image) => {
   });
 });
 
+// Resets the modal state and clears pending transitions.
 const closeImageModal = () => {
   if (!imageModal || !imageModalCarousel) {
     return;
@@ -164,20 +224,25 @@ const closeImageModal = () => {
 
   imageModal.hidden = true;
   imageModalCarousel.innerHTML = "";
+  imageModalCarousel.classList.remove("is-changing", "is-next", "is-prev");
   activeModalImages = [];
   activeModalIndex = 0;
+  window.clearTimeout(modalTransitionTimer);
 };
 
 imageModalClose?.addEventListener("click", closeImageModal);
 imageModalBackdrop?.addEventListener("click", closeImageModal);
 
+// Modal navigation buttons cycle through every image in the current project gallery.
 imageModalPrev?.addEventListener("click", () => {
   if (activeModalImages.length === 0) {
     return;
   }
 
-  activeModalIndex = (activeModalIndex - 1 + activeModalImages.length) % activeModalImages.length;
-  renderModalImage();
+  changeModalImage(
+    (activeModalIndex - 1 + activeModalImages.length) % activeModalImages.length,
+    "prev"
+  );
 });
 
 imageModalNext?.addEventListener("click", () => {
@@ -185,8 +250,7 @@ imageModalNext?.addEventListener("click", () => {
     return;
   }
 
-  activeModalIndex = (activeModalIndex + 1) % activeModalImages.length;
-  renderModalImage();
+  changeModalImage((activeModalIndex + 1) % activeModalImages.length, "next");
 });
 
 addSwipeNavigation(
@@ -225,6 +289,7 @@ if (projectCards.length > 0 && prevButton && nextButton) {
     return difference;
   };
 
+  // Updates the 3D carousel classes: left, center, right and hidden positions.
   const updateCarousel = () => {
     projectCards.forEach((card, index) => {
       const relativeIndex = getRelativeIndex(index);
@@ -246,6 +311,8 @@ if (projectCards.length > 0 && prevButton && nextButton) {
     requestAnimationFrame(syncProjectCarouselHeight);
   };
 
+  // Keeps the carousel wrapper height aligned with visible cards.
+  // Desktop uses the tallest card to avoid clipping side cards; mobile uses the active card.
   syncProjectCarouselHeight = () => {
     if (!projectsCarousel) {
       return;
@@ -284,6 +351,7 @@ if (projectCards.length > 0 && prevButton && nextButton) {
     () => prevButton.click()
   );
 
+  // Keyboard navigation works for both the modal and the project carousel.
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && imageModal && !imageModal.hidden) {
       closeImageModal();

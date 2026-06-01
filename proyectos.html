@@ -1,171 +1,201 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
-<title>Proyectos</title>
-<link rel="stylesheet" href="css/styles.css">
+  <!-- Page metadata and global portfolio styles. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-<script src="js/particles-config.js"></script>
-
 <body>
-<div id="particles-bg"></div>
+  <!-- Animated particle background shared across the portfolio. -->
+  <div id="particles-bg"></div>
 
-<nav class="navbar">
-<a href="home.html">🏠</a>
-<a href="trayectoria.html">👤</a>
-<a href="proyectos.html">💼</a>
-<a href="contacto.html">✉️</a>
-</nav>
+  <!-- Fixed bottom navigation used by every main page. -->
+  <nav class="navbar" aria-label="Navegación principal">
+    <a href="home.html" aria-label="Inicio">🏠</a>
+    <a href="trayectoria.html" aria-label="Trayectoria">👤</a>
+    <a href="proyectos.html" aria-label="Proyectos">💼</a>
+    <a href="contacto.html" aria-label="Contacto">✉️</a>
+  </nav>
 
-<h1 class="projects-title">Mis Proyectos</h1>
+  <main>
+    <h1 class="projects-title">Mis Proyectos</h1>
 
-<section class="projects-section">
-<button class="carousel-control carousel-control-prev" type="button" aria-label="Proyecto anterior">&#10094;</button>
+    <!-- Project carousel. JS assigns position classes and handles keyboard/touch navigation. -->
+    <section class="projects-section" aria-label="Listado de proyectos">
+      <button class="carousel-control carousel-control-prev" type="button" aria-label="Proyecto anterior">&#10094;</button>
 
-<div class="projects" id="projects-carousel">
-<div class="project-card">
-<div class="project-media">
-<img src="img/astro_pi_logo.png" alt="Astro PI">
-</div>
-<div class="project-title-block">
-<h3>Astro PI - Gestor de Peticiones e Incidencias.</h3>
-</div>
-<div class="project-description-block">
-<p>App diseñada en formato CRUD como sistema de ticketing PET-INC. Incluye inventario actualizable y panel de control para gestionar peticiones e incidencias.</p>
-<p>v. 0.1</p>
-</div>
-<div class="tags project-tags-block">
-<span>Spring Boot</span>
-<span>Java</span>
-<span>Maven</span>
-<span>IntelliJ IDEA</span>
-<span>PostgreSQL</span>
-<span>DBeaver</span>
-<span>AI</span>
-<span>Postman</span>
-<span>Git</span>
-</div>
-<div class="project-actions project-actions-block">
-<a class="btn" href="https://github.com/danielmonteroruiz/astroPI">Ver proyecto</a>
-<button class="btn gallery-toggle" type="button" aria-expanded="false">Ver imagenes</button>
-</div>
-<div class="project-gallery">
-<img src="img/astro_pi_logo.png" alt="Astro PI - logo del proyecto">
-<img src="img/en_desarrollo.png" alt="Astro PI - captura del proyecto">
-</div>
-</div>
+      <div class="projects" id="projects-carousel">
+        <article class="project-card">
+          <div class="project-media">
+            <img src="img/astro_pi_logo.png" alt="Astro PI">
+          </div>
 
-<div class="project-card">
-<div class="project-media">
-<img src="img/GymTrackLogo.png" alt="GymTrack">
-</div>
-<div class="project-title-block">
-<h3>GymTrack - Diario de entrenamiento y rutinas.</h3>
-</div>
-<div class="project-description-block">
-<p>Aplicación web para registrar entrenamientos, crear rutinas personalizadas y consultar el progreso diario del usuario.</p>
-<p>Aun en desarrollo.</p>
-</div>
-<div class="tags project-tags-block">
-<span>Visual Studio Code</span>
-<span>TypeScript</span>
-<span>TSX</span>
-<span>CSS</span>
-<span>React</span>
-<span>Vite</span>
-<span>Supabase</span>
-<span>AI</span>
-<span>Local Storage</span>
-</div>
-<div class="project-actions project-actions-block">
-<a class="btn" href="https://gymtrackes.netlify.app/">Ver proyecto</a>
-<button class="btn gallery-toggle" type="button" aria-expanded="false">Ver imagenes</button>
-</div>
-<div class="project-gallery">
-<img src="img/GymTrackLogo.png" alt="GymTrack - logo del proyecto">
-<img src="img/caffeine_chaos.jpg" alt="GymTrack - captura del proyecto">
-</div>
-</div>
+          <div class="project-title-block">
+            <h3>Astro PI - Gestor de Peticiones e Incidencias.</h3>
+          </div>
 
-<div class="project-card">
-<div class="project-media">
-<img src="img/berielogo.png" alt="Berie's Adventure">
-</div>
-<div class="project-title-block">
-<h3>Berie's Adventure - Videojuego 2D Unity.</h3>
-</div>
-<div class="project-description-block">
-<p>Proyecto fin de grado de un videojuego de plataformas 2D desarrollado con el motor Unity.</p>
-<p>v. 1.1</p>
-</div>
-<div class="tags project-tags-block">
-<span>Unity</span>
-<span>C#</span>
-<span>AI</span>
-<span>Git</span>
-<span>GitHub</span>
-</div>
-<div class="project-actions project-actions-block">
-<a class="btn" href="https://github.com/oscardaaz/proyect-unity-2dam">Ver proyecto</a>
-<button class="btn gallery-toggle" type="button" aria-expanded="false">Ver imagenes</button>
-</div>
-<div class="project-gallery">
-<img src="img/berielogo.png" alt="Berie's Adventure - logo del proyecto">
-<img src="img/en_desarrollo.png" alt="Berie's Adventure - captura del proyecto">
-</div>
-</div>
+          <div class="project-description-block">
+            <p>App diseñada en formato CRUD como sistema de ticketing PET-INC. Incluye inventario actualizable y panel de control para gestionar peticiones e incidencias.</p>
+            <p>v. 0.1</p>
+          </div>
 
-<div class="project-card">
-<div class="project-media">
-<img src="img/en_desarrollo.png" alt="Proyecto Ameba">
-</div>
-<div class="project-title-block">
-<h3>Proyecto Ameba - Videojuego 2D Unity.</h3>
-</div>
-<div class="project-description-block">
-<p>Videojuego 2D desarrollado en Unity, inspirado en The Binding of Isaac. Proyecto personal en curso.</p>
-<p>Aun en desarrollo.</p>
-</div>
-<div class="tags project-tags-block">
-<span>Unity</span>
-<span>C#</span>
-<span>AI Codex</span>
-<span>Git</span>
-<span>GitHub</span>
-</div>
-<div class="project-actions project-actions-block">
-<a class="btn" href="#">Ver proyecto</a>
-<button class="btn gallery-toggle" type="button" aria-expanded="false">Ver imagenes</button>
-</div>
-<div class="project-gallery">
-<img src="img/en_desarrollo.png" alt="Proyecto Ameba - imagen principal">
-<img src="img/en_desarrollo.png" alt="Proyecto Ameba - captura del proyecto">
-</div>
-</div>
-</div>
+          <div class="tags project-tags-block">
+            <span>Spring Boot</span>
+            <span>Java</span>
+            <span>Maven</span>
+            <span>IntelliJ IDEA</span>
+            <span>PostgreSQL</span>
+            <span>DBeaver</span>
+            <span>AI</span>
+            <span>Postman</span>
+            <span>Git</span>
+          </div>
 
-<button class="carousel-control carousel-control-next" type="button" aria-label="Proyecto siguiente">&#10095;</button>
-</section>
+          <div class="project-actions project-actions-block">
+            <a class="btn" href="https://github.com/danielmonteroruiz/astroPI">Ver proyecto</a>
+            <button class="btn gallery-toggle" type="button" aria-expanded="false">Ver imágenes</button>
+          </div>
 
-<div class="image-modal" id="image-modal" hidden>
-<div class="image-modal-backdrop"></div>
-<div class="image-modal-dialog" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
-<button class="image-modal-close" type="button" aria-label="Cerrar imagen">X</button>
-<button class="image-modal-nav image-modal-prev" type="button" aria-label="Imagen anterior">&#10094;</button>
-<div class="image-modal-stage">
-<div class="image-modal-carousel"></div>
-</div>
-<button class="image-modal-nav image-modal-next" type="button" aria-label="Imagen siguiente">&#10095;</button>
-</div>
-</div>
+          <!-- Gallery thumbnails. JS limits visible thumbnails and opens the full modal. -->
+          <div class="project-gallery">
+            <img src="img/astro_pi_logo.png" alt="Astro PI - logo del proyecto">
+            <img src="img/en_desarrollo.png" alt="Astro PI - captura del proyecto">
+          </div>
+        </article>
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-<script src="js/particles-config.js"></script>
-<script src="js/project-gallery.js"></script>
+        <article class="project-card">
+          <div class="project-media">
+            <img src="img/GymTrackLogo.png" alt="GymTrack">
+          </div>
 
+          <div class="project-title-block">
+            <h3>GymTrack - Diario de entrenamiento y rutinas.</h3>
+          </div>
+
+          <div class="project-description-block">
+            <p>Aplicación web para registrar entrenamientos, crear rutinas personalizadas y consultar el progreso diario del usuario.</p>
+            <p>Aún en desarrollo.</p>
+          </div>
+
+          <div class="tags project-tags-block">
+            <span>Visual Studio Code</span>
+            <span>TypeScript</span>
+            <span>TSX</span>
+            <span>CSS</span>
+            <span>React</span>
+            <span>Vite</span>
+            <span>Supabase</span>
+            <span>AI</span>
+            <span>Local Storage</span>
+          </div>
+
+          <div class="project-actions project-actions-block">
+            <a class="btn" href="https://gymtrackes.netlify.app/">Ver proyecto</a>
+            <button class="btn gallery-toggle" type="button" aria-expanded="false">Ver imágenes</button>
+          </div>
+
+          <!-- Gallery thumbnails. Extra images are summarized with a +N badge by JS. -->
+          <div class="project-gallery">
+            <img src="img/GymTrackLogo.png" alt="GymTrack - logo del proyecto">
+            <img src="img/gt1.png" alt="GymTrack - captura del proyecto">
+            <img src="img/gt2.png" alt="GymTrack - captura del proyecto">
+            <img src="img/gt3.png" alt="GymTrack - captura del proyecto">
+            <img src="img/gt4.png" alt="GymTrack - captura del proyecto">
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media">
+            <img src="img/berielogo.png" alt="Berie's Adventure">
+          </div>
+
+          <div class="project-title-block">
+            <h3>Berie's Adventure - Videojuego 2D Unity.</h3>
+          </div>
+
+          <div class="project-description-block">
+            <p>Proyecto fin de grado de un videojuego de plataformas 2D desarrollado con el motor Unity.</p>
+            <p>v. 1.1</p>
+          </div>
+
+          <div class="tags project-tags-block">
+            <span>Unity</span>
+            <span>C#</span>
+            <span>AI</span>
+            <span>Git</span>
+            <span>GitHub</span>
+          </div>
+
+          <div class="project-actions project-actions-block">
+            <a class="btn" href="https://github.com/oscardaaz/proyect-unity-2dam">Ver proyecto</a>
+            <button class="btn gallery-toggle" type="button" aria-expanded="false">Ver imágenes</button>
+          </div>
+
+          <!-- Gallery thumbnails. JS keeps modal navigation available for all images. -->
+          <div class="project-gallery">
+            <img src="img/berielogo.png" alt="Berie's Adventure - logo del proyecto">
+            <img src="" alt="Berie's Adventure - captura del proyecto">
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media">
+            <img src="img/en_desarrollo.png" alt="Proyecto Ameba">
+          </div>
+
+          <div class="project-title-block">
+            <h3>Proyecto Ameba - Videojuego 2D Unity.</h3>
+          </div>
+
+          <div class="project-description-block">
+            <p>Videojuego 2D desarrollado en Unity, inspirado en The Binding of Isaac. Proyecto personal en curso.</p>
+            <p>Aún en desarrollo.</p>
+          </div>
+
+          <div class="tags project-tags-block">
+            <span>Unity</span>
+            <span>C#</span>
+            <span>AI Codex</span>
+            <span>Git</span>
+            <span>GitHub</span>
+          </div>
+
+          <div class="project-actions project-actions-block">
+            <a class="btn" href="#">Ver proyecto</a>
+            <button class="btn gallery-toggle" type="button" aria-expanded="false">Ver imágenes</button>
+          </div>
+
+          <!-- Gallery thumbnails Ameba Proyect. Placeholder images can be replaced as the project evolves. -->
+          <div class="project-gallery">
+            <img src="img/en_desarrollo.png" alt="Proyecto Ameba - imagen principal">
+            <img src="img/en_desarrollo.png" alt="Proyecto Ameba - captura del proyecto">
+          </div>
+        </article>
+      </div>
+
+      <button class="carousel-control carousel-control-next" type="button" aria-label="Proyecto siguiente">&#10095;</button>
+    </section>
+
+    <!-- Fullscreen image modal controlled by project-gallery.js. -->
+    <div class="image-modal" id="image-modal" hidden>
+      <div class="image-modal-backdrop"></div>
+      <div class="image-modal-dialog" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+        <button class="image-modal-close" type="button" aria-label="Cerrar imagen">X</button>
+        <button class="image-modal-nav image-modal-prev" type="button" aria-label="Imagen anterior">&#10094;</button>
+        <div class="image-modal-stage">
+          <div class="image-modal-carousel"></div>
+        </div>
+        <button class="image-modal-nav image-modal-next" type="button" aria-label="Imagen siguiente">&#10095;</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- External libraries and page behavior. -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="js/particles-config.js"></script>
+  <script src="js/project-gallery.js"></script>
 </body>
 </html>

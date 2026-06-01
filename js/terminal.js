@@ -1,34 +1,33 @@
-const lines = [
-"> Iniciando portafolio...",
-"> Cargando Proyectos [OK]",
-"> Cargando Perfil [OK]",
-"> Bienvenido a DanielMonteroCode"
+// Legacy terminal reveal helper.
+// This is kept for pages that might still use #terminal-text and #main in the future.
+const terminalText = document.getElementById("terminal-text");
+const terminalWrapper = document.getElementById("terminal");
+const mainContent = document.getElementById("main");
+const terminalLines = [
+  "> Iniciando portafolio...",
+  "> Cargando Proyectos [OK]",
+  "> Cargando Perfil [OK]",
+  "> Bienvenido a DanielMonteroCode",
 ];
 
-let index = 0;
-const terminal = document.getElementById("terminal-text");
+let terminalLineIndex = 0;
 
-function typeLine(){
+function typeTerminalLine() {
+  if (!terminalText || !terminalWrapper || !mainContent) {
+    return;
+  }
 
-if(index < lines.length){
+  if (terminalLineIndex < terminalLines.length) {
+    terminalText.textContent += `${terminalLines[terminalLineIndex]}\n`;
+    terminalLineIndex += 1;
+    window.setTimeout(typeTerminalLine, 1500);
+    return;
+  }
 
-terminal.innerHTML += lines[index] + "\n";
-
-index++;
-
-setTimeout(typeLine,1500);
-
-}else{
-
-setTimeout(()=>{
-
-document.getElementById("terminal").style.display="none";
-document.getElementById("main").style.display="block";
-
-},1000)
-
+  window.setTimeout(() => {
+    terminalWrapper.style.display = "none";
+    mainContent.style.display = "block";
+  }, 1000);
 }
 
-}
-
-window.onload = typeLine;
+window.addEventListener("load", typeTerminalLine);

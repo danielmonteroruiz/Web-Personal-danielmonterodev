@@ -1,46 +1,43 @@
+// Entry-page terminal loader.
+// It writes a short startup sequence and redirects to the home page once shown.
 const terminal = document.getElementById("terminal");
-
-const lines = [
-"> Iniciando portafolio...",
-"> Cargando Proyectos [OK]",
-"> Cargando Perfil [OK]",
-"> Bienvenido a DanielMonteroCode"
+const loaderLines = [
+  "> Iniciando portafolio...",
+  "> Cargando Proyectos [OK]",
+  "> Cargando Perfil [OK]",
+  "> Bienvenido a DanielMonteroCode",
 ];
 
-let index = 0;
+let currentLineIndex = 0;
 
-function writeLine(){
-
-if(index < lines.length){
-
-terminal.innerHTML += lines[index] + "\n";
-
-index++;
-
-setTimeout(writeLine,1200);
-
-}else{
-
-localStorage.setItem("animationShown","true");
-
-setTimeout(()=>{
-window.location.href = "home.html";
-},1200)
-
+function redirectToHome() {
+  localStorage.setItem("animationShown", "true");
+  window.setTimeout(() => {
+    window.location.href = "home.html";
+  }, 1200);
 }
 
+function writeNextLoaderLine() {
+  if (!terminal) {
+    redirectToHome();
+    return;
+  }
+
+  if (currentLineIndex >= loaderLines.length) {
+    redirectToHome();
+    return;
+  }
+
+  terminal.textContent += `${loaderLines[currentLineIndex]}\n`;
+  currentLineIndex += 1;
+  window.setTimeout(writeNextLoaderLine, 1200);
 }
 
-window.onload = function(){
+window.addEventListener("load", () => {
+  if (localStorage.getItem("animationShown")) {
+    window.location.href = "home.html";
+    return;
+  }
 
-if(localStorage.getItem("animationShown")){
-
-window.location.href = "home.html";
-
-}else{
-
-writeLine();
-
-}
-
-}
+  writeNextLoaderLine();
+});
