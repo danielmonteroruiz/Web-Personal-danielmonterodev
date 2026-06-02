@@ -16,7 +16,7 @@ const swipeConfig = {
   maxVerticalDrift: 80,
 };
 
-// Adds horizontal swipe navigation while preserving normal vertical page scrolling.
+// Añade navegación horizontal táctil sin bloquear el scroll vertical de la página.
 function addSwipeNavigation(element, onSwipeLeft, onSwipeRight) {
   if (!element) {
     return;
@@ -73,8 +73,8 @@ function addSwipeNavigation(element, onSwipeLeft, onSwipeRight) {
   );
 }
 
-// Keeps gallery previews compact: show two thumbnails and summarize the rest with +N.
-// Hidden thumbnails remain in the DOM so the modal can still browse the full gallery.
+// Mantiene compactas las galerías: muestra dos miniaturas y resume el resto con +N.
+// Las miniaturas ocultas siguen en el DOM para que el modal pueda recorrer la galería completa.
 document.querySelectorAll(".project-gallery").forEach((gallery) => {
   const images = Array.from(gallery.querySelectorAll("img"));
   const hiddenImageCount = Math.max(images.length - 2, 0);
@@ -104,7 +104,7 @@ document.querySelectorAll(".project-gallery").forEach((gallery) => {
   gallery.appendChild(moreIndicator);
 });
 
-// Expands or collapses the inline preview gallery inside each project card.
+// Abre o cierra la galería interna de cada tarjeta de proyecto.
 document.querySelectorAll(".gallery-toggle").forEach((button) => {
   button.addEventListener("click", () => {
     const card = button.closest(".project-card");
@@ -121,7 +121,7 @@ document.querySelectorAll(".gallery-toggle").forEach((button) => {
   });
 });
 
-// Rebuilds modal slides and assigns spatial classes around the active image.
+// Reconstruye las diapositivas del modal y asigna clases de posición alrededor de la imagen activa.
 const renderModalImage = () => {
   if (!imageModalCarousel || activeModalImages.length === 0) {
     return;
@@ -170,7 +170,7 @@ const renderModalImage = () => {
   });
 };
 
-// Applies a visible transition before replacing the active modal image.
+// Aplica una transición visible antes de reemplazar la imagen activa del modal.
 const changeModalImage = (nextIndex, direction) => {
   if (!imageModalCarousel || activeModalImages.length === 0) {
     return;
@@ -190,7 +190,7 @@ const changeModalImage = (nextIndex, direction) => {
   }, 320);
 };
 
-// Opens the fullscreen modal from a clicked thumbnail or +N preview indicator.
+// Abre el modal a pantalla amplia desde una miniatura o desde el indicador +N.
 const openProjectImage = (image) => {
   if (!imageModal) {
     return;
@@ -207,7 +207,7 @@ const openProjectImage = (image) => {
 
 window.openProjectImage = openProjectImage;
 
-// Turns every gallery thumbnail into a modal trigger.
+// Convierte cada miniatura de galería en disparador del modal.
 document.querySelectorAll(".project-gallery img").forEach((image) => {
   image.addEventListener("click", (event) => {
     event.preventDefault();
@@ -216,7 +216,7 @@ document.querySelectorAll(".project-gallery img").forEach((image) => {
   });
 });
 
-// Resets the modal state and clears pending transitions.
+// Restablece el estado del modal y limpia transiciones pendientes.
 const closeImageModal = () => {
   if (!imageModal || !imageModalCarousel) {
     return;
@@ -233,7 +233,7 @@ const closeImageModal = () => {
 imageModalClose?.addEventListener("click", closeImageModal);
 imageModalBackdrop?.addEventListener("click", closeImageModal);
 
-// Modal navigation buttons cycle through every image in the current project gallery.
+// Los botones del modal recorren todas las imágenes de la galería del proyecto actual.
 imageModalPrev?.addEventListener("click", () => {
   if (activeModalImages.length === 0) {
     return;
@@ -289,7 +289,7 @@ if (projectCards.length > 0 && prevButton && nextButton) {
     return difference;
   };
 
-  // Updates the 3D carousel classes: left, center, right and hidden positions.
+  // Actualiza las clases del carrusel 3D: izquierda, centro, derecha y posiciones ocultas.
   const updateCarousel = () => {
     projectCards.forEach((card, index) => {
       const relativeIndex = getRelativeIndex(index);
@@ -311,8 +311,8 @@ if (projectCards.length > 0 && prevButton && nextButton) {
     requestAnimationFrame(syncProjectCarouselHeight);
   };
 
-  // Keeps the carousel wrapper height aligned with visible cards.
-  // Desktop uses the tallest card to avoid clipping side cards; mobile uses the active card.
+  // Mantiene la altura del contenedor del carrusel alineada con las tarjetas visibles.
+  // En escritorio usa la tarjeta más alta para evitar recortes; en móvil usa la tarjeta activa.
   syncProjectCarouselHeight = () => {
     if (!projectsCarousel) {
       return;
@@ -351,7 +351,7 @@ if (projectCards.length > 0 && prevButton && nextButton) {
     () => prevButton.click()
   );
 
-  // Keyboard navigation works for both the modal and the project carousel.
+  // La navegación por teclado funciona tanto en el modal como en el carrusel de proyectos.
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && imageModal && !imageModal.hidden) {
       closeImageModal();

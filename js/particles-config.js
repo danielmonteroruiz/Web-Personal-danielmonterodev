@@ -1,5 +1,5 @@
-// Shared particles.js configuration for the portfolio background.
-// Every page includes a #particles-bg element, so this file can be reused safely.
+// Configuración compartida de particles.js para el fondo del portfolio.
+// Todas las páginas incluyen #particles-bg, por eso este archivo se reutiliza con seguridad.
 if (window.particlesJS) {
   particlesJS("particles-bg", {
     particles: {

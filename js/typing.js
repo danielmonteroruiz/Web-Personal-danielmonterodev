@@ -1,5 +1,5 @@
-// Rotates the specialization text on the home page.
-// The animation is intentionally lightweight: no dependencies, just timed text swaps.
+// Rota el texto de especialización en la página de inicio.
+// La animación es ligera a propósito: sin dependencias, solo cambios de texto temporizados.
 const typingTarget = document.querySelector(".typing");
 const specializationWords = [
   "Java",

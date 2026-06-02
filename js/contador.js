@@ -1,5 +1,5 @@
-// Session-aware visit counter for the home page.
-// CounterAPI receives one increment per browser session and the value is cached locally.
+// Contador de visitas de la página de inicio con control por sesión.
+// CounterAPI recibe un incremento por sesión del navegador y el valor queda cacheado.
 document.addEventListener("DOMContentLoaded", () => {
   const counterElement = document.getElementById("contador");
 

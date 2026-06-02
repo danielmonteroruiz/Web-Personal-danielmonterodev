@@ -1,5 +1,5 @@
-// Entry-page terminal loader.
-// It writes a short startup sequence and redirects to the home page once shown.
+// Cargador inicial con efecto terminal.
+// Escribe una secuencia breve de arranque y redirige a la página de inicio.
 const terminal = document.getElementById("terminal");
 const loaderLines = [
   "> Iniciando portafolio...",

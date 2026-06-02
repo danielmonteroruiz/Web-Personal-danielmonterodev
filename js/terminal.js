@@ -1,5 +1,5 @@
-// Legacy terminal reveal helper.
-// This is kept for pages that might still use #terminal-text and #main in the future.
+// Utilidad heredada para revelar contenido con efecto terminal.
+// Se conserva para páginas que puedan volver a usar #terminal-text y #main en el futuro.
 const terminalText = document.getElementById("terminal-text");
 const terminalWrapper = document.getElementById("terminal");
 const mainContent = document.getElementById("main");

@@ -1,6 +1,6 @@
-// Handles the contact form submission without leaving the portfolio page.
-// The form is still posted to FormSubmit, but the response is consumed with fetch
-// so the user gets a local toast confirmation instead of a redirect.
+// Gestiona el envío del formulario sin salir del portfolio.
+// El formulario se envía a FormSubmit, pero la respuesta se consume con fetch
+// para mostrar una confirmación local en lugar de redirigir al usuario.
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
   const toast = document.getElementById("toast");

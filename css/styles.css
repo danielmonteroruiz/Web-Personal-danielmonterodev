@@ -1,8 +1,8 @@
 /*
   Portfolio stylesheet
   --------------------
-  Sections are grouped by page/feature so static HTML pages can share one CSS file:
-  global layout, navigation, home, projects, contact, trajectory and responsive rules.
+  Las secciones se agrupan por página/funcionalidad para compartir un único CSS:
+  estructura global, navegación, inicio, proyectos, contacto, trayectoria y responsive.
 */
 
 * {
@@ -16,12 +16,12 @@ body {
     font-family: Arial;
     background: #050816;
     color: white;
-    /* Keeps content visible above the fixed bottom navbar. */
+    /* Mantiene el contenido visible por encima de la barra inferior fija. */
     padding-bottom: 120px;
 
 }
 
-/* Shared animated particle background. */
+/* Fondo animado de partículas compartido por todas las páginas. */
 #particles-bg {
 
     position: fixed;
@@ -38,7 +38,7 @@ body {
 
 }
 
-/* Loader terminal page. */
+/* Pantalla de carga con efecto terminal. */
 
 .terminal-body,
 .loader-body {
@@ -64,7 +64,7 @@ body {
 
 
 
-/* Fixed desktop navigation. */
+/* Navegación fija de escritorio. */
 .navbar {
 
     position: fixed;
@@ -133,7 +133,7 @@ body {
     margin-top: 20px;
 }
 
-/* Home hero layout. */
+/* Estructura principal de la página de inicio. */
 
 .home {
 
@@ -272,7 +272,7 @@ body {
 
 }
 
-/* Projects page: carousel cards, inline galleries and modal viewer. */
+/* Página de proyectos: tarjetas del carrusel, galerías internas y modal. */
 
 .projects-title {
 
@@ -787,7 +787,7 @@ body {
 }
 
 
-/* Projects page responsive adjustments. */
+/* Ajustes responsive de la página de proyectos. */
 @media (max-width:768px) {
 
     body {
@@ -1089,7 +1089,7 @@ body {
 }
 
 
-/* Contact page responsive layout. */
+/* Estructura responsive de la página de contacto. */
 
 @media (max-width:768px) {
 
@@ -1119,7 +1119,7 @@ body {
 
 }
 
-/* Contact page layout. */
+/* Estructura de la página de contacto. */
 
 .contact-container {
 
@@ -1139,7 +1139,7 @@ body {
 
 }
 
-/* Contact form fields. */
+/* Campos del formulario de contacto. */
 
 input,
 textarea {
@@ -1177,7 +1177,7 @@ textarea {
 
 }
 
-/* Contact information cards. */
+/* Tarjetas de información de contacto. */
 
 .contact-boxes {
 
@@ -1199,7 +1199,7 @@ textarea {
 
 }
 
-/* Form placeholder styling. */
+/* Estilo de los textos placeholder del formulario. */
 
 input::placeholder,
 textarea::placeholder {
@@ -1208,7 +1208,7 @@ textarea::placeholder {
 
 }
 
-/* Trajectory page layout. */
+/* Estructura de la página de trayectoria. */
 
 .page-title {
 
@@ -1240,7 +1240,7 @@ textarea::placeholder {
 
 }
 
-/* Trajectory timeline responsive layout. */
+/* Estructura responsive de la línea temporal de trayectoria. */
 
 @media (max-width:768px) {
 
@@ -1257,7 +1257,7 @@ textarea::placeholder {
 }
 
 
-/* Shared card and utility elements. */
+/* Tarjetas compartidas y elementos auxiliares. */
 
 
 .box {
@@ -1371,7 +1371,7 @@ img {
 
 }
 
-/* Mobile profile image scaling. */
+/* Ajuste móvil de la imagen de perfil. */
 
 @media (max-width:768px) {
 
@@ -1384,7 +1384,7 @@ img {
 
 }
 
-/* Mobile home layout. */
+/* Estructura móvil de la página de inicio. */
 @media (max-width:768px) {
 
     .home {
@@ -1434,7 +1434,7 @@ img {
 
 }
 
-/* Mobile shared text sizing. */
+/* Tamaño de texto compartido en móvil. */
 @media (max-width:768px) {
     .box p {
         font-size: 14px;
@@ -1490,7 +1490,7 @@ img {
 }
 
 
-/* Alternate mobile navbar tuning for narrow screens. */
+/* Ajuste alternativo de la navegación móvil para pantallas estrechas. */
 @media (max-width:768px) {
 
     .navbar {
@@ -1510,7 +1510,7 @@ img {
 
 }
 
-/* Mobile trajectory text readability. */
+/* Legibilidad del texto de trayectoria en móvil. */
 @media (max-width:768px) {
     .about-text {
         max-width: 700px;
@@ -1530,7 +1530,7 @@ img {
 
 }
 
-/* Contact form toast message. */
+/* Mensaje emergente del formulario de contacto. */
 #toast {
 
     position: fixed;
